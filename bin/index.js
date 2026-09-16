@@ -1,40 +1,55 @@
 #!/usr/bin/env node
 
+const hello = require("../src/commands/hello");
+const help = require("../src/commands/help");
+const greet = require("../src/commands/greet");
+const add = require("../src/commands/add");
+const tasks = require("../src/commands/tasks");
+const done = require("../src/commands/done");
+const remove = require("../src/commands/remove");
+const clear = require("../src/commands/clear");
+
 const command = process.argv[2];
+const args = process.argv.slice(3);
 
-if (command === "hello") {
-    console.log("Hello from Haseeb CLI 🚀");
-}
+switch (command) {
 
-else if (command === "help") {
-    console.log(`
-Haseeb CLI
+    case "hello":
+        hello();
+        break;
 
-Usage:
-  haseeb <command>
+    case "help":
+        help();
+        break;
 
-Commands:
-  hello       Say hello
-  help        Show this help message
-  greet       Greet someone
-  --version   Show version
-`);
-}
+    case "greet":
+        greet(args);
+        break;
 
-else if (command === "--version") {
-    console.log("1.0.0");
-}
+    case "add":
+        add(args);
+        break;
 
-else if (command === "greet") {
-    const name = process.argv.slice(3).join(" ");
+    case "tasks":
+        tasks();
+        break;
 
-    if (!name) {
-        console.log("Please provide a name.");
-    } else {
-        console.log(`Hello, ${name}! 👋`);
-    }
-}
+    case "--version":
+        console.log("1.0.0");
+        break;
 
-else {
-    console.log("Unknown command. Try: haseeb help");
+    case "done":
+        done(args);
+        break;
+
+    case "remove":
+        remove(args);
+        break;
+
+    case "clear":
+        clear();
+        break;
+
+    default:
+        console.log("Unknown command. Try: haseeb help");
 }
