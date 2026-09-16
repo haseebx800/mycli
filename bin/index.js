@@ -1,18 +1,25 @@
-#!/usr/bin/env node
-const command = process.argv[2];
 if (command === "hello") {
-    console.log("Hello from Haseeb CLI 🚀");
+    // ...
 }
+
 else if (command === "help") {
-    console.log(`
-Haseeb CLI
-Usage:
-  haseeb <command>
-Commands:
-  hello    Say hello
-  help     Show this help message
-`);
+    // ...
 }
+
+else if (command === "--version") {
+    // ...
+}
+
+else if (command === "greet") {
+    const name = process.argv[3];
+
+    if (!name) {
+        console.log("Please provide a name.");
+    } else {
+        console.log(`Hello, ${name}! 👋`);
+    }
+}
+
 else {
     console.log("Unknown command. Try: haseeb help");
 }
